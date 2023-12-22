@@ -4,8 +4,7 @@ const socket = io("http://localhost:8080");
 const combat = useCombatStore();
 socket.on("initiatives", (data) => {
   console.log(combat.initiatives);
-
-  combat.initiatives.push(data); // Add initiatives to the combat.js initiatives array
+    combat.initiatives = data; // Set the combat.js initiatives array
 });
 socket.on("turnChange", (data) => {
   combat.playerturn = data; // Change the turn in the combat.js store
