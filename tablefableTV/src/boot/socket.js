@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 import { useCombatStore } from "../stores/combat";
-const socket = io("http://localhost:8080");
+const socket = io("http://139.91.81.103:8080");
 const combat = useCombatStore();
 socket.on("initiatives", (data) => {
   console.log(combat.initiatives);
