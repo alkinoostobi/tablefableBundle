@@ -5,8 +5,8 @@ export const useCombatStore = defineStore("combat", {
     initiatives: [],
     playerturn: 0,
     combatLogs: [],
-    playerCharacters: {
-      player1: "name",
-    },
+    players: [],
+    enemies : [],
+    started: false,
   }),
 });

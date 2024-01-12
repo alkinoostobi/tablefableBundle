@@ -37,6 +37,15 @@ io.on("connection", (socket) => {
   socket.on("playerNames", (playerNames) => {
     io.emit("playerNames", playerNames);
   });
+  socket.on("tokenslist", (tokenslist) => {
+    io.emit("tokenslist", tokenslist);
+  });
+  socket.on("combatStart", () => {
+    io.emit("combatStart");
+  });
+  socket.on("combatEnd", () => {
+    io.emit("combatEnd");
+  });
 });
 
 // Start TableFable
@@ -93,15 +102,15 @@ child.stderr.on("data", (data) => {
 });
 // Proxy requests to the appropriate applications
 app.use("/tablefable", (req, res) => {
-  proxy.web(req, res, { target: "http://192.168.10.104:3000" });
+  proxy.web(req, res, { target: "localhost:3000" });
 });
 
 app.use("/tablefablemobile", (req, res) => {
-  proxy.web(req, res, { target: "http://192.168.10.104:4000" });
+  proxy.web(req, res, { target: "localhost:4000" });
 });
 
 app.use("/tablefabletv", (req, res) => {
-  proxy.web(req, res, { target: "http://192.168.10.104:5000" });
+  proxy.web(req, res, { target: "localhost:5000" });
 });
 
 // Handle errors

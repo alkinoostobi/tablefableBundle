@@ -19,14 +19,20 @@ socket.on("removeFromInitiative", (data) => {
 socket.on("addPlayer", (data) => {
   combat.players.push(data); // Add player to the combat.js players array
 });
-
+socket.on("tokenslist", (data) => {
+  console.log(data)
+  combat.players = data.pc; // Set the combat.js players arrays
+  combat.enemies = data.npc; // Set the combat.js enemies arrays
+});
 socket.on("removePlayer", (data) => {
   const index = combat.players.indexOf(data);
   if (index !== -1) {
     combat.players.splice(index, 1); // Remove from the combat.js players array
   }
 });
-
+socket.on("combatStart", () => {
+combat.started = true; // Set the combat.js started variable
+});
 socket.on("addToInitiative", (data) => {
   combat.initiatives.push(data); // Add to the combat.js initiatives array
 });
