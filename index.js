@@ -39,6 +39,7 @@ io.on("connection", (socket) => {
   });
 });
 
+
 // Start TableFable
 exec("npm run dev", { cwd: "./TableFable" }, (error, stdout, stderr) => {
   if (error) {

@@ -17,7 +17,19 @@
     data() {
       return {
         combat: combat,
+        GesturesStr: [
+              "SWIPE_LEFT",
+        "SWIPE_UP",
+        "SWIPE_DOWN",
+        "SWIPE_RIGHT",
+        "CIRCLE_CLOCKWISE",
+        "CIRCLE_COUNTERCLOCKWISE",
+        "PINCH",
+          ],
       };
+    },
+    mounted() {
+      console.log(this.GesturesStr);
     },
   });
   </script>
