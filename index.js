@@ -31,8 +31,8 @@ io.on("connection", (socket) => {
   socket.on("turnChange", (turn) => {
     io.emit("turnChange", turn);
   });
-  socket.on("combatLogs", (logs) => {
-    io.emit("logs", logs);
+  socket.on("addToLog", (logs) => {
+    io.emit("addToLog", logs);
   });
   socket.on("playerNames", (playerNames) => {
     io.emit("playerNames", playerNames);

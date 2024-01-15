@@ -21,8 +21,10 @@ socket.on("addPlayer", (data) => {
 });
 socket.on("tokenslist", (data) => {
   console.log(data)
-  combat.players = data.pc; // Set the combat.js players arrays
-  combat.enemies = data.npc; // Set the combat.js enemies arrays
+  combat.players = data.pcs; // Set the combat.js players arrays
+  console.log(combat.players)
+  combat.enemies = data.npcs; // Set the combat.js enemies arrays
+  console.log(combat.enemies)
 });
 socket.on("removePlayer", (data) => {
   const index = combat.players.indexOf(data);
@@ -38,5 +40,19 @@ socket.on("addToInitiative", (data) => {
 });
 
 socket.on("addToLog", (data) => {
-  combat.logs.push(data); // Add to the combat.js logs array
+  combat.combatLogs.push(data); // Add to the combat.js logs array
+});
+
+let GesturesStr= [
+  "SWIPE_LEFT",
+"SWIPE_UP",
+"SWIPE_DOWN",
+"SWIPE_RIGHT",
+"CIRCLE_CLOCKWISE",
+"CIRCLE_COUNTERCLOCKWISE",
+"PINCH",
+];
+window["electronAPI"].onGesture(function(arg) {
+  console.log("Gesture recognised: ", GesturesStr[arg]);
+
 });
