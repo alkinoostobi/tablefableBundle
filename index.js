@@ -11,8 +11,9 @@ app.use(cors());
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*", // Allow all origins
+    origin: "*", // Specify the origin
     methods: ["GET", "POST"], // Allow these HTTP methods
+    credentials: true
   },
 });
 
@@ -41,10 +42,17 @@ io.on("connection", (socket) => {
     io.emit("tokenslist", tokenslist);
   });
   socket.on("combatStart", () => {
+    console.log("combatStart");
     io.emit("combatStart");
   });
   socket.on("combatEnd", () => {
     io.emit("combatEnd");
+  });
+  socket.on('scrollUp', () => {
+    io.emit('scrollUp');
+  });
+  socket.on('scrollDown', () => {
+    io.emit('scrollDown');
   });
 });
 

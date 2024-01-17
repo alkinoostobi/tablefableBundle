@@ -38,12 +38,11 @@ combat.started = true; // Set the combat.js started variable
 socket.on("addToInitiative", (data) => {
   combat.initiatives.push(data); // Add to the combat.js initiatives array
 });
-
 socket.on("addToLog", (data) => {
   combat.combatLogs.push(data); // Add to the combat.js logs array
 });
 
-let GesturesStr= [
+/*let GesturesStr= [
   "SWIPE_LEFT",
 "SWIPE_UP",
 "SWIPE_DOWN",
@@ -55,4 +54,5 @@ let GesturesStr= [
 window["electronAPI"].onGesture(function(arg) {
   console.log("Gesture recognised: ", GesturesStr[arg]);
 
-});
+});*/
+export default socket;

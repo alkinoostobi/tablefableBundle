@@ -41,7 +41,7 @@
   <script>
   import { defineComponent, ref } from "vue";
   import { useCombatStore } from "../stores/combat.js";
-
+  import socket from "../boot/socket"; // Adjust the path as needed
   const combat = useCombatStore();
   export default defineComponent({
     name: "MainLayout",
@@ -61,9 +61,22 @@
         logsContainer.scrollTop += (e.key === 'ArrowDown' ? vh : -vh);
       }
     },
+
     },
     mounted() {
     window.addEventListener('keydown', this.handleKeyDown);
+    socket.on("scrollUp" , () => {
+      const logsContainer = this.$el.querySelector('.logs-container');
+      if (!logsContainer) return;
+      const vh = window.innerHeight * 0.05; // 5vh
+      logsContainer.scrollTop += -vh;
+    });
+    socket.on("scrollDown" , () => {
+      const logsContainer = this.$el.querySelector('.logs-container');
+      if (!logsContainer) return;
+      const vh = window.innerHeight * 0.05; // 5vh
+      logsContainer.scrollTop += vh;
+    });
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
