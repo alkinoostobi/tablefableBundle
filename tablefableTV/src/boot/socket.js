@@ -53,6 +53,12 @@ socket.on("addToLog", (data) => {
 ];
 window["electronAPI"].onGesture(function(arg) {
   console.log("Gesture recognised: ", GesturesStr[arg]);
-
+  if(GesturesStr[arg] == "CIRCLE_CLOCKWISE"){
+    socket.emit("roll");
+  }else if(GesturesStr[arg] == "SWIPE_UP"){
+    socket.emit("scrollDown");
+  }else if(GesturesStr[arg] == "SWIPE_DOWN"){
+    socket.emit("scrollUp");
+  }
 });*/
 export default socket;
