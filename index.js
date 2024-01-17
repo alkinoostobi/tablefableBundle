@@ -54,6 +54,9 @@ io.on("connection", (socket) => {
   socket.on('scrollDown', () => {
     io.emit('scrollDown');
   });
+  socket.on('roll', () => { 
+    io.emit('roll');
+  });
 });
 
 // Start TableFable
