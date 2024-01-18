@@ -41,7 +41,9 @@ socket.on("addToInitiative", (data) => {
 socket.on("addToLog", (data) => {
   combat.combatLogs.push(data); // Add to the combat.js logs array
 });
-
+socket.on("deleteToken", (data) => {
+  combat.deleteToken(data); // Add to the combat.js logs array
+});
 /*let GesturesStr= [
   "SWIPE_LEFT",
 "SWIPE_UP",

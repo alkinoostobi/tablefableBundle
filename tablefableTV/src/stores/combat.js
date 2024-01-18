@@ -29,8 +29,26 @@ export const useCombatStore = defineStore("combat", {
       {type:'damage' , body: 'Goblin 1 takes 5 damage'},
       */
     ],
-    players: [],
+    players: {},
     enemies : [],
     started: false,
   }),
+  actions: {
+    deleteToken(token) {
+      console.log(this.initiatives);
+      console.log(token);
+      console.log(this.players)
+      const index = this.initiatives.findIndex((c) => c[0] === token);
+      console.log(index)
+      if (index !== -1) {
+        this.initiatives.splice(index, 1);
+      }
+      if (this.players[token]) {
+        delete this.players[token];
+      } else {
+        delete this.enemies[token];
+      }
+      
+    }
+  }
 });
