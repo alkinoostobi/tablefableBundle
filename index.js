@@ -19,7 +19,24 @@ const io = socketIo(server, {
 });
 
 const proxy = httpProxy.createProxyServer();
-
+var tokenlists = {};
+var scenes = {
+  scenes: {
+    scene_1:{
+      place: 'The Tavern',
+      gridsize : 80,
+      description: 'You are in a tavern',
+      background: 'https://i.ytimg.com/vi/oKYMab1M7ec/maxresdefault.jpg',
+      map : 'https://i.etsystatic.com/18388031/r/il/9d4260/3985533804/il_1080xN.3985533804_f3h1.jpg',
+    },
+    scene_2:{
+      place: 'Aperstorke forest',
+      gridsize : 20,
+      description: 'You are in a forest',
+      background: 'https://www.otherworldlyincantations.com/wp-content/uploads/otherworldly-incantations-forest-worldbuilding.jpg',
+      map : 'https://2minutetabletop.com/wp-content/uploads/2021/07/Big-Forest-Clear-Day-44x32-1.jpg',
+    },
+  } } 
 io.on("connection", (socket) => {
     console.log("New client connected");
 
@@ -58,8 +75,8 @@ io.on("connection", (socket) => {
     socket.on('roll', () => {
         io.emit('roll');
     });
-    socket.on('loadscene', (map) => {
-        io.emit('loadscene', map);
+    socket.on('loadscene', (scene) => {
+        io.emit('loadscene', scene);
     });
     socket.on('rolldie', (num) => {
         io.emit('rolldie', num);
@@ -79,6 +96,37 @@ io.on("connection", (socket) => {
     socket.on('deleteToken', (token) => {
       console.log(token);
     io.emit('deleteToken', token);
+  });
+  socket.on('updateToken', (token) => {
+    console.log(token);
+    io.emit('updateToken', token);
+  });
+  socket.on('updateTokensTable', (token) => {
+    console.log(token);
+    io.emit('updateTokensTable', token);
+  });
+  socket.on('insertTokens' , (tokens) => {
+    tokenlists = tokens;
+    console.log(tokenlists)
+    io.emit('insertTokens', tokens);
+  });
+  socket.on('givemeTokens', () => {
+    io.emit('insertTokens', tokenlists);
+  });
+  socket.on('updateTableToken', (token , category) => {
+    io.emit('updateTableToken', token, category);
+  });
+  socket.on('addScene', (scene) => {
+    scenes.scenes[scene.name] = scene;
+  });
+  socket.on('getScenes', () => {
+    io.emit('getScenes', scenes);
+  });
+  socket.on('giveScene', (scene) => {
+    io.emit('giveScene', scene);
+  });
+  socket.on('putnpc', (npc) => {
+    io.emit('putnpc', npc);
   });
 });
 
