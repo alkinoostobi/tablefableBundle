@@ -5,7 +5,7 @@ export const useCombatStore = defineStore("combat", {
     initiatives: [],
     playerturn: 0,
     combatLogs: [
-      /*
+
       {type:'title' , body: 'Party Long-Rested in the Aperstroke Forest'},
       {type:'importantMessage' , body: 'Party Suprised! Combat Initiated'},
       {type:'title' , body: 'Player 1 (Wilt Mbondo) Turn'},
@@ -27,7 +27,7 @@ export const useCombatStore = defineStore("combat", {
       {type:'intendedText', body: 'Action 2: Attack Goblin 1 (Fail)'},
       {type:'intendedText', body: 'Action 3: Attack Goblin 1 (Success)'},
       {type:'damage' , body: 'Goblin 1 takes 5 damage'},
-      */
+
     ],
     players: {},
     enemies : [],
@@ -48,7 +48,7 @@ export const useCombatStore = defineStore("combat", {
       } else {
         delete this.enemies[token];
       }
-      
+
     }
   }
 });

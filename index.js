@@ -31,7 +31,7 @@ var scenes = {
     },
     scene_2:{
       place: 'Aperstorke forest',
-      gridsize : 20,
+      gridsize : 40,
       description: 'You are in a forest',
       background: 'https://www.otherworldlyincantations.com/wp-content/uploads/otherworldly-incantations-forest-worldbuilding.jpg',
       map : 'https://2minutetabletop.com/wp-content/uploads/2021/07/Big-Forest-Clear-Day-44x32-1.jpg',
@@ -184,15 +184,15 @@ child.stderr.on("data", (data) => {
 });
 // Proxy requests to the appropriate applications
 app.use("/tablefable", (req, res) => {
-    proxy.web(req, res, {target: "localhost:3000"});
+    proxy.web(req, res, {target: "139.91.81.121:3000"});
 });
 
 app.use("/tablefablemobile", (req, res) => {
-    proxy.web(req, res, {target: "localhost:4000"});
+    proxy.web(req, res, {target: "139.91.81.121:4000"});
 });
 
 app.use("/tablefabletv", (req, res) => {
-    proxy.web(req, res, {target: "localhost:5000"});
+    proxy.web(req, res, {target: "139.91.81.121:5000"});
 });
 
 // Handle errors

@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 import { useCombatStore } from "../stores/combat";
-const socket = io("http://localhost:8080");
+const socket = io("http://139.91.81.121:8080");
 const combat = useCombatStore();
 socket.on("initiatives", (data) => {
   console.log(combat.initiatives);
@@ -44,7 +44,7 @@ socket.on("addToLog", (data) => {
 socket.on("deleteToken", (data) => {
   combat.deleteToken(data); // Add to the combat.js logs array
 });
-/*let GesturesStr= [
+let GesturesStr= [
   "SWIPE_LEFT",
 "SWIPE_UP",
 "SWIPE_DOWN",
@@ -62,5 +62,5 @@ window["electronAPI"].onGesture(function(arg) {
   }else if(GesturesStr[arg] == "SWIPE_DOWN"){
     socket.emit("scrollUp");
   }
-});*/
+});
 export default socket;
